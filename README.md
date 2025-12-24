@@ -1,75 +1,82 @@
-# React + TypeScript + Vite
+# 🧩 Lexis — A Word Deduction Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lexis is a browser-based word deduction game inspired by modern daily word puzzles, built from scratch with custom architecture, animations, and extensible game logic.
 
-Currently, two official plugins are available:
+The project focuses on clean React design, state-driven gameplay, and polished user feedback while remaining fully playable on both desktop and mobile devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br>
+<br>
 
-## React Compiler
+## 🎮 Gameplay Overview
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Guess a hidden **5-letter word**
+- You have **6 attempts**
+- Each guess provides feedback for every letter:
+  - 🟩 Correct letter in the correct position
+  - 🟨 Correct letter in the wrong position
+  - ⬛ Letter not in the word
+- Invalid words are rejected with a **row shake animation**
+- The game ends when you either guess the word or run out of attempts
 
-Note: This will impact Vite dev & build performances.
+<br>
+<br>
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Core Gameplay
+- Random or deterministic word selection
+- Physical keyboard and on-screen keyboard support
+- Dictionary-based word validation
+- Restartable game session
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### UI & UX
+- Responsive layout for mobile and desktop
+- Animated on-screen keyboard using Framer Motion
+- Row shake animation for invalid guesses
+- Tile flip animations on word submission
+- Clear win / lose feedback
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Architecture
+- Modular component-based design
+- Centralized input handling
+- Declarative animations
+- Strong separation of game logic and presentation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<br>
+<br>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Tech Stack
+
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Vite**
+
+<br>
+<br>
+
+## 🧠 Design Decisions
+
+- **Single input pipeline**  
+  Both physical and on-screen keyboard inputs use the same handler to avoid duplicated logic.
+
+- **Clear responsibility boundaries**
+  - `App` manages game rules and state
+  - `Grid` controls layout
+  - `Row` handles animations
+  - `Tile` is purely presentational
+
+- **Animation strategy**  
+  All animations are declarative and state-driven using Framer Motion — no direct DOM manipulation.
+
+<br>
+<br>
+
+## ▶️ Running Locally
+
+```bash
+npm install
+npm run dev
