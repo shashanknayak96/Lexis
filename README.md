@@ -18,6 +18,8 @@ The project focuses on clean React design, state-driven gameplay, and polished u
 - Invalid words are rejected with a **row shake animation**
 - The game ends when you either guess the word or run out of attempts
 
+![alt text](image.png)
+
 <br>
 <br>
 
